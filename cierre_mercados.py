@@ -11,6 +11,7 @@ Requisitos:
 """
 
 import os
+from datetime import datetime
 
 import numpy as np
 import pandas as pd
@@ -51,6 +52,9 @@ LOOKBACK = "30d"
 
 
 def main():
+    print("=================================")
+    print(f"Generando cierre tickers internacionales a las {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+
     symbols = list(dict.fromkeys(TICKER_MAP.values()))  # únicos, preserva orden
 
     # Descarga de precios ajustados
@@ -105,6 +109,7 @@ def main():
 
     out.to_csv(OUTPUT_FILE, index=False)
     print(f"Archivo generado: {OUTPUT_FILE}")
+    print("===============================================")
 
 
 if __name__ == "__main__":
